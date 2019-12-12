@@ -25,7 +25,7 @@ public class Form {
         this.c = c;
         this.d = d;
         this.name = name;
-
+        System.out.println(name);
         switch (name) {
             case "j":
                 color = Color.SLATEGRAY;

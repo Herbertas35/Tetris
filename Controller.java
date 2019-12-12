@@ -42,66 +42,82 @@ public class Controller {
             }
         }
     }
-
+    // todo Change new forms coordinates from top to bottom (Done)
     public static Form makeRect() {
         int block = (int) (Math.random() * 100);
         String name;
         Rectangle a = new Rectangle(SIZE-1, SIZE-1), b = new Rectangle(SIZE-1, SIZE-1), c = new Rectangle(SIZE-1, SIZE-1),
                 d = new Rectangle(SIZE-1, SIZE-1);
         if (block < 15) {
-            a.setX(XMAX / 2 - SIZE);
+            a.setX (XMAX / 2 - SIZE);
+            a.setY(YMAX - SIZE);
             b.setX(XMAX / 2 - SIZE);
-            b.setY(SIZE);
+            b.setY(YMAX - SIZE - SIZE);
             c.setX(XMAX / 2);
-            c.setY(SIZE);
+            c.setY(YMAX - SIZE - SIZE);
             d.setX(XMAX / 2 + SIZE);
-            d.setY(SIZE);
+            d.setY(YMAX - SIZE - SIZE);
             name = "j";
         } else if (block < 30) {
-            a.setX(XMAX / 2 + SIZE);
-            b.setX(XMAX / 2 - SIZE);
-            b.setY(SIZE);
-            c.setX(XMAX / 2);
-            c.setY(SIZE);
+            a.setX(XMAX / 2 - SIZE);
+            a.setY(YMAX - SIZE - SIZE);
+            b.setX(XMAX / 2);
+            b.setY(YMAX - SIZE - SIZE);
+            c.setX(XMAX / 2 + SIZE);
+            c.setY(YMAX - SIZE - SIZE);
             d.setX(XMAX / 2 + SIZE);
-            d.setY(SIZE);
+            d.setY(YMAX - SIZE);
             name = "l";
         } else if (block < 45) {
             a.setX(XMAX / 2 - SIZE);
+            a.setY(YMAX - SIZE - SIZE);
             b.setX(XMAX / 2);
+            b.setY(YMAX - SIZE - SIZE);
             c.setX(XMAX / 2 - SIZE);
-            c.setY(SIZE);
+            c.setY(YMAX - SIZE);
             d.setX(XMAX / 2);
-            d.setY(SIZE);
+            d.setY(YMAX - SIZE);
             name = "o";
         } else if (block < 60) {
-            a.setX(XMAX / 2 + SIZE);
+            a.setX(XMAX / 2 - SIZE);
+            a.setY(YMAX - SIZE);
             b.setX(XMAX / 2);
+            b.setY(YMAX - SIZE);
             c.setX(XMAX / 2);
-            c.setY(SIZE);
-            d.setX(XMAX / 2 - SIZE);
-            d.setY(SIZE);
+            c.setY(YMAX - SIZE - SIZE);
+            d.setX(XMAX / 2 + SIZE);
+            d.setY(YMAX - SIZE - SIZE);
             name = "s";
         } else if (block < 75) {
-            a.setX(XMAX / 2 - SIZE);
-            b.setX(XMAX / 2);
+            a.setX(XMAX / 2);
+            a.setY(YMAX - SIZE - SIZE);
+            b.setX(XMAX / 2 - SIZE);
+            b.setY(YMAX - SIZE);
             c.setX(XMAX / 2);
-            c.setY(SIZE);
+            c.setY(YMAX - SIZE);
             d.setX(XMAX / 2 + SIZE);
+            d.setY(YMAX - SIZE);
             name = "t";
         } else if (block < 90) {
-            a.setX(XMAX / 2 + SIZE);
+            a.setX(XMAX / 2 - SIZE);
+            a.setY(YMAX - SIZE - SIZE);
             b.setX(XMAX / 2);
-            c.setX(XMAX / 2 + SIZE);
-            c.setY(SIZE);
-            d.setX(XMAX / 2 + SIZE + SIZE);
-            d.setY(SIZE);
+            b.setY(YMAX - SIZE - SIZE);
+            c.setX(XMAX / 2);
+            c.setY(YMAX - SIZE);
+            d.setX(XMAX / 2 + SIZE);
+            d.setY(YMAX - SIZE);
             name = "z";
         } else {
-            a.setX(XMAX / 2 - SIZE - SIZE);
-            b.setX(XMAX / 2 - SIZE);
+            a.setX(XMAX / 2);
+            a.setY(YMAX - SIZE - SIZE - SIZE - SIZE);
+            b.setX(XMAX / 2);
+            b.setY(YMAX - SIZE - SIZE - SIZE);
             c.setX(XMAX / 2);
-            d.setX(XMAX / 2 + SIZE);
+            c.setY(YMAX - SIZE - SIZE);
+            d.setX(XMAX / 2);
+            d.setY(YMAX - SIZE);
+
             name = "i";
         }
         return new Form(a, b, c, d, name);
