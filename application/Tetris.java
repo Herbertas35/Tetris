@@ -25,12 +25,12 @@ public class Tetris extends Application {
     public static int YMAX = SIZE * 24;
     public static int[][] MESH = new int[XMAX / SIZE][YMAX / SIZE];
     private static Pane group = new Pane();
-    private static Form object;
+    private static formmm object;
     private static Scene scene = new Scene(group, XMAX + 150, YMAX);
     public static int score = 0;
     private static int bot = 0; // todo change name from top to bottom (DONE)
     private static boolean game = true;
-    private static Form nextObj = Controller.makeRect();
+    private static formmm nextObj = Controller.makeRect();
     private static int linesNo = 0;
 
     public static void main(String[] args) {
@@ -55,7 +55,7 @@ public class Tetris extends Application {
         level.setFill(Color.GREEN);
         group.getChildren().addAll(scoretext, line, level);
 
-        Form a = nextObj;
+        formmm a = nextObj;
         group.getChildren().addAll(a.a, a.b, a.c, a.d);
         moveOnKeyPress(a);
         object = a;
@@ -67,36 +67,34 @@ public class Tetris extends Application {
         Timer fall = new Timer();
         TimerTask task = new TimerTask() {
             public void run() {
-                Platform.runLater(new Runnable() {
-                    public void run() {
-                        // todo change 0 to YMAX - SIZE (Done)
-                        if (object.a.getY() == YMAX - SIZE || object.b.getY() == YMAX - SIZE || object.c.getY() == YMAX - SIZE
-                                || object.d.getY() == YMAX - SIZE)
-                            bot++;
-                        else
-                            bot = 0;
+                Platform.runLater(() -> {
+                    // todo change 0 to YMAX - SIZE (Done)
+                    if (object.a.getY() == YMAX - SIZE || object.b.getY() == YMAX - SIZE || object.c.getY() == YMAX - SIZE
+                            || object.d.getY() == YMAX - SIZE)
+                        bot++;
+                    else
+                        bot = 0;
 
-                        if (bot == 2) {
-                            // GAME OVER
-                            Text over = new Text("GAME OVER");
-                            over.setFill(Color.RED);
-                            over.setStyle("-fx-font: 70 arial;");
-                            over.setY(250);
-                            over.setX(10);
-                            group.getChildren().add(over);
-                            game = false;
-                        }
-                        // Exit after waiting
-                        if (bot == 15) {
-                            System.exit(0);
+                    if (bot == 2) {
+                        // GAME OVER
+                        Text over = new Text("GAME OVER");
+                        over.setFill(Color.RED);
+                        over.setStyle("-fx-font: 70 arial;");
+                        over.setY(250);
+                        over.setX(10);
+                        group.getChildren().add(over);
+                        game = false;
+                    }
+                    // Exit after waiting
+                    if (bot == 15) {
+                        System.exit(0);
 
-                        }
+                    }
 
-                        if (game) {
-                            MoveUp(object); // todo must be move up  (DONE)
-                            scoretext.setText("Score: " + score);
-                            level.setText("Lines: " + linesNo);
-                        }
+                    if (game) {
+                        MoveUp(object); // todo must be move up  (DONE)
+                        scoretext.setText("Score: " + score);
+                        level.setText("Lines: " + linesNo);
                     }
                 });
             }
@@ -104,7 +102,7 @@ public class Tetris extends Application {
         fall.schedule(task, 0, 400);
     }
 
-    private void moveOnKeyPress(Form form) {
+    private void moveOnKeyPress(formmm form) {
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -133,7 +131,8 @@ public class Tetris extends Application {
         });
     }
 
-    private void MoveTurn(Form form) {
+    // todo Implemented with strategyContext (DONE)
+    private void MoveTurn(formmm form) {
         int f = form.form;
         Rectangle a = form.a;
         Rectangle b = form.b;
@@ -486,6 +485,7 @@ public class Tetris extends Application {
         }
     }
 
+    // todo Implemented in Rotator Strategy (DONE)
     private boolean cB(Rectangle rect, int x, int y) {
         boolean xb = false;
         boolean yb = false;
@@ -499,6 +499,8 @@ public class Tetris extends Application {
             yb = rect.getY() + y * MOVE < YMAX;
         return xb && yb && MESH[((int) rect.getX() / SIZE) + x][((int) rect.getY() / SIZE) + y] == 0;
     }
+
+
 
     private void RemoveRows(Pane pane) {
         ArrayList<Node> rects = new ArrayList<Node>();
@@ -563,6 +565,7 @@ public class Tetris extends Application {
                 rects.clear();
             } while (lines.size() > 0);
     }
+    // todo implememnted in rotator Strategy (DONE)
     private void MoveDown(Rectangle rect) {
         if (rect.getY() + MOVE < YMAX)
             rect.setY(rect.getY() + MOVE);
@@ -584,7 +587,7 @@ public class Tetris extends Application {
             rect.setY(rect.getY() - MOVE);
     }
 
-    private void MoveUp(Form form) {
+    private void MoveUp(formmm form) {
 
         if (form.a.getY() ==  0 || form.b.getY() ==  0 || form.c.getY() ==  0
                 || form.d.getY() == 0 || moveA(form) || moveB(form) || moveC(form) || moveD(form)) {
@@ -594,7 +597,7 @@ public class Tetris extends Application {
             MESH[(int) form.d.getX() / SIZE][(int) form.d.getY() / SIZE] = 1;
             RemoveRows(group);
 
-            Form a = nextObj;
+            formmm a = nextObj;
             nextObj = Controller.makeRect();
             object = a;
             group.getChildren().addAll(a.a, a.b, a.c, a.d);
@@ -617,20 +620,20 @@ public class Tetris extends Application {
     }
 
 
-    private boolean moveA(Form form) {
+    private boolean moveA(formmm form) {
         return (MESH[(int) form.a.getX() / SIZE][((int) form.a.getY() / SIZE) - 1] == 1);
     }
 
-    private boolean moveB(Form form) {
+    private boolean moveB(formmm form) {
         return (MESH[(int) form.b.getX() / SIZE][((int) form.b.getY() / SIZE) - 1] == 1);
     }
 
-    private boolean moveC(Form form) {
+    private boolean moveC(formmm form) {
         return (MESH[(int) form.c.getX() / SIZE][((int) form.c.getY() / SIZE) - 1] == 1);
     }
 
 
-    private boolean moveD(Form form) {
+    private boolean moveD(formmm form) {
         return (MESH[(int) form.d.getX() / SIZE][((int) form.d.getY() / SIZE) - 1] == 1);
     }
 

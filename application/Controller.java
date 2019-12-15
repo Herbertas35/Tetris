@@ -1,6 +1,9 @@
 package application;
 
 
+import application.form.Form;
+import application.form.FormFactory;
+import application.form.FormI;
 import javafx.scene.shape.Rectangle;
 
 public class Controller {
@@ -11,7 +14,8 @@ public class Controller {
     public static int YMAX = Tetris.YMAX;
     public static int[][] MESH = Tetris.MESH;
 
-    public static void MoveRight(Form form) {
+    // todo form movement implemented in form class
+    public static void MoveRight(formmm form) {
         if (form.a.getX() + MOVE <= XMAX - SIZE && form.b.getX() + MOVE <= XMAX - SIZE
                 && form.c.getX() + MOVE <= XMAX - SIZE && form.d.getX() + MOVE <= XMAX - SIZE) {
             int movea = MESH[((int) form.a.getX() / SIZE) + 1][((int) form.a.getY() / SIZE)];
@@ -27,7 +31,7 @@ public class Controller {
         }
     }
 
-    public static void MoveLeft(Form form) {
+    public static void MoveLeft(formmm form) {
         if (form.a.getX() - MOVE >= 0 && form.b.getX() - MOVE >= 0 && form.c.getX() - MOVE >= 0
                 && form.d.getX() - MOVE >= 0) {
             int movea = MESH[((int) form.a.getX() / SIZE) - 1][((int) form.a.getY() / SIZE)];
@@ -42,8 +46,9 @@ public class Controller {
             }
         }
     }
+
     // todo Change new forms coordinates from top to bottom (Done)
-    public static Form makeRect() {
+    public static formmm makeRect() {
         int block = (int) (Math.random() * 100);
         String name;
         Rectangle a = new Rectangle(SIZE-1, SIZE-1), b = new Rectangle(SIZE-1, SIZE-1), c = new Rectangle(SIZE-1, SIZE-1),
@@ -120,6 +125,6 @@ public class Controller {
 
             name = "i";
         }
-        return new Form(a, b, c, d, name);
+        return new formmm(a, b, c, d, name);
     }
 }
