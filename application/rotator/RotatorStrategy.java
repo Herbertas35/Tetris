@@ -9,8 +9,8 @@ public abstract class RotatorStrategy {
     protected Form form;
     protected int rightBorderCoordinatesX = GameField.XMAX - GameField.SIZE;
     protected int leftBorderCoordinatesX = 0;
-    protected int bottomBoredCoordinatesY = GameField.YMAX;
-    protected int TopBorderCoordinatesY = 0;
+    protected int bottomBorderCoordinates = GameField.YMAX;
+    protected int topBorderCoordinates = 0;
     protected int move = GameField.MOVE;
     protected int size = GameField.SIZE;
 
@@ -30,7 +30,7 @@ public abstract class RotatorStrategy {
     }
 
     protected void MoveDown(Rectangle rect) {
-        if (rect.getY() + move < bottomBoredCoordinatesY)
+        if (rect.getY() + move < bottomBorderCoordinates)
             rect.setY(rect.getY() + move);
 
     }
@@ -41,7 +41,7 @@ public abstract class RotatorStrategy {
     }
 
     protected void MoveUp(Rectangle rect) {
-        if (rect.getY() - move > bottomBoredCoordinatesY)
+        if (rect.getY() - move > bottomBorderCoordinates)
             rect.setY(rect.getY() - move);
     }
 
@@ -50,13 +50,13 @@ public abstract class RotatorStrategy {
         boolean xb = false;
         boolean yb = false;
         if (x >= 0)
-            xb = rect.getX() + x * move <= leftBorderCoordinatesX;
+            xb = rect.getX() + x * move <= rightBorderCoordinatesX;
         if (x < 0)
-            xb = rect.getX() + x * move >= 0;
+            xb = rect.getX() + x * move >= leftBorderCoordinatesX;
         if (y >= 0)
-            yb = rect.getY() - y * move > 0;
+            yb = rect.getY() - y * move > topBorderCoordinates;
         if (y < 0)
-            yb = rect.getY() + y * move < bottomBoredCoordinatesY;
+            yb = rect.getY() + y * move < bottomBorderCoordinates;
 
         boolean nextPosition = gameField.getMeshCoordinateState((int)(rect.getX()/size) + x, (int)(rect.getY()/size) + y);
         return xb && yb && !nextPosition;

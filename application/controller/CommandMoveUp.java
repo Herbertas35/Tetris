@@ -8,13 +8,14 @@ import application.view.GameField;
 public class CommandMoveUp implements Command {
 
     private GameField gameField;
-    private GameState gameState;
+    private GameStateHandler gameStateHandler;
     private int move = GameField.MOVE;
     private Form form;
 
-    public CommandMoveUp(Form form, GameField gameField) {
+    public CommandMoveUp(Form form, GameField gameField, GameStateHandler gameStateHandler) {
         this.gameField = gameField;
         this.form = form;
+        this.gameStateHandler = gameStateHandler;
     }
 
     @Override
@@ -27,9 +28,13 @@ public class CommandMoveUp implements Command {
     public void moveUp() {
 
         if (checkEnd()){
-            gameState.setNeedForm();
+            gameField.setMeshCoordinate((int)form.getFormRect(Form.RectEnum.a).getX() / move, (int)form.getFormRect(Form.RectEnum.a).getY() / move);
+            gameField.setMeshCoordinate((int)form.getFormRect(Form.RectEnum.b).getX() / move, (int)form.getFormRect(Form.RectEnum.b).getY() / move);
+            gameField.setMeshCoordinate((int)form.getFormRect(Form.RectEnum.c).getX() / move, (int)form.getFormRect(Form.RectEnum.c).getY() / move);
+            gameField.setMeshCoordinate((int)form.getFormRect(Form.RectEnum.d).getX() / move, (int)form.getFormRect(Form.RectEnum.d).getY() / move);
+            gameStateHandler.setNeedForm(true);
         }
-        if (checkFieldBorder() && checkFieldUpPosition()) {
+        else if (checkFieldBorder() && checkFieldUpPosition()) {
             form.moveFormUp();
         }
     }

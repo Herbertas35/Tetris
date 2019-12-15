@@ -16,7 +16,7 @@ public class GameField {
     public static final int XMAX = SIZE * 12;
     public static int YMAX = SIZE * 24;
     public static int[][] MESH = new int[XMAX / SIZE][YMAX / SIZE];
-    GameState gameState;
+//    GameState gameState = new Game;
 
     public GameField(){
         clearMesh();
@@ -30,12 +30,12 @@ public class GameField {
     }
 
     public boolean getMeshCoordinateState(int x, int y){
-//        if ((x >= XMAX/SIZE) || (x < 0)){
-//
-//        }
-//        if ((y >= YMAX/SIZE) || (y < 0)){
-//            return -1;
-//        }
+        if ((x >= XMAX/SIZE) || (x <= 0)){
+            return true;
+        }
+        if ((y >= YMAX/SIZE) || (y <= 0)){
+            return true;
+        }
 
         return MESH[x][y] != 0;
     }

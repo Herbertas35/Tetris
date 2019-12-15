@@ -12,6 +12,8 @@ public class FormFactory {
         Z
     }
 
+    public FormFactory(){};
+
     public Form getForm(FormType formType){
         switch (formType){
             case I:

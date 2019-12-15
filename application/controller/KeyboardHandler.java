@@ -1,8 +1,8 @@
 package application.controller;
 
 import application.form.Form;
+import application.gameState.GameStateHandler;
 import application.view.GameField;
-import javafx.application.Application;
 import javafx.scene.input.KeyEvent;
 
 public class KeyboardHandler {
@@ -11,7 +11,7 @@ public class KeyboardHandler {
 
 
 
-    public void handle(KeyEvent event, Form form, GameField gameField){
+    public void handle(KeyEvent event, Form form, GameField gameField, GameStateHandler gameStateHandler){
         Command command = null;
 
         switch (event.getCode()){
@@ -27,7 +27,7 @@ public class KeyboardHandler {
 
             case W:
             case UP:
-                command = new CommandMoveUp(form, gameField);
+                command = new CommandMoveUp(form, gameField, gameStateHandler);
                 break;
 
             case S:

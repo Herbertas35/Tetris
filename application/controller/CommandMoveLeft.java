@@ -5,10 +5,9 @@ import application.view.GameField;
 
 public class CommandMoveLeft implements Command {
 
-    GameField gameField;
-    Form form;
-    int move = GameField.MOVE;
-    int leftBorderCoordinate = 0;
+    private GameField gameField;
+    private Form form;
+    private final int move = GameField.MOVE;
 
     public CommandMoveLeft(Form form, GameField gameField){
         this.gameField = gameField;
@@ -28,6 +27,7 @@ public class CommandMoveLeft implements Command {
     }
 
     private boolean checkFieldBorder(){
+        int leftBorderCoordinate = 0;
         return (form.getFormRect(Form.RectEnum.a).getX() + move >= leftBorderCoordinate) &&
                 (form.getFormRect(Form.RectEnum.a).getX() + move >= leftBorderCoordinate) &&
                 (form.getFormRect(Form.RectEnum.a).getX() + move >= leftBorderCoordinate) &&

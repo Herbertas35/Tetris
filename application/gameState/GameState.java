@@ -7,7 +7,6 @@ public class GameState {
         GAME_OVER
     }
 
-    private static boolean needNewForm = false;
 
     private static GameStateEnum gameState = GameStateEnum.GAME;
 
@@ -21,8 +20,6 @@ public class GameState {
         return gameState;
     }
 
-    public void setNeedForm(){
-        needNewForm = true;
-    }
+
 }
 

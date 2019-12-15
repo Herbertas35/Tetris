@@ -5,10 +5,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public abstract class Form {
-    protected Rectangle a, b, c, d;
+    protected Rectangle a = new Rectangle();
+    protected Rectangle b = new Rectangle();
+    protected Rectangle c = new Rectangle();
+    protected Rectangle d = new Rectangle();
+
     protected Color color;
     protected String name;
     private int formRotationLevel = 1;
+
+    protected Form(){};
 
     public enum RectEnum{
         a,
@@ -70,32 +76,32 @@ public abstract class Form {
 
     public void moveFormRight(){
         this.a.setX(this.a.getX() + GameField.MOVE);
-        this.b.setX(this.a.getX() + GameField.MOVE);
-        this.c.setX(this.a.getX() + GameField.MOVE);
-        this.d.setX(this.a.getX() + GameField.MOVE);
+        this.b.setX(this.b.getX() + GameField.MOVE);
+        this.c.setX(this.c.getX() + GameField.MOVE);
+        this.d.setX(this.d.getX() + GameField.MOVE);
     }
 
     public void moveFormLeft(){
         this.a.setX(this.a.getX() - GameField.MOVE);
-        this.b.setX(this.a.getX() - GameField.MOVE);
-        this.c.setX(this.a.getX() - GameField.MOVE);
-        this.d.setX(this.a.getX() - GameField.MOVE);
+        this.b.setX(this.b.getX() - GameField.MOVE);
+        this.c.setX(this.c.getX() - GameField.MOVE);
+        this.d.setX(this.d.getX() - GameField.MOVE);
     }
 
     public void moveFormUp() {
-        this.a.setY(this.a.getY() + GameField.MOVE);
-        this.b.setY(this.a.getY() + GameField.MOVE);
-        this.c.setY(this.a.getY() + GameField.MOVE);
-        this.d.setY(this.a.getY() + GameField.MOVE);
+        this.a.setY(this.a.getY() - GameField.MOVE);
+        this.b.setY(this.b.getY() - GameField.MOVE);
+        this.c.setY(this.c.getY() - GameField.MOVE);
+        this.d.setY(this.d.getY() - GameField.MOVE);
     }
 
     // possible not needed
 
     public void moveFormDown() {
-        this.a.setY(this.a.getY() - GameField.MOVE);
-        this.b.setY(this.a.getY() - GameField.MOVE);
-        this.c.setY(this.a.getY() - GameField.MOVE);
-        this.d.setY(this.a.getY() - GameField.MOVE);
+        this.a.setY(this.a.getY() + GameField.MOVE);
+        this.b.setY(this.b.getY() + GameField.MOVE);
+        this.c.setY(this.c.getY() + GameField.MOVE);
+        this.d.setY(this.d.getY() + GameField.MOVE);
     }
 
     public boolean isObjectInBot(){

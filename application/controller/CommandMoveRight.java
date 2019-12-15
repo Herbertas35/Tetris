@@ -10,8 +10,6 @@ public class CommandMoveRight implements Command {
     private Form form;
     private final int move = GameField.MOVE;
     private final int size = GameField.SIZE;
-    private final int rightBorderCoordinate = GameField.XMAX - GameField.SIZE;
-
 
 
     public CommandMoveRight(Form form, GameField gameField){
@@ -31,6 +29,7 @@ public class CommandMoveRight implements Command {
     }
 
     private boolean checkFieldBorder(){
+        int rightBorderCoordinate = GameField.XMAX - GameField.SIZE;
         return (form.getFormRect(Form.RectEnum.a).getX() + move <= rightBorderCoordinate) &&
                 (form.getFormRect(Form.RectEnum.a).getX() + move <= rightBorderCoordinate) &&
                 (form.getFormRect(Form.RectEnum.a).getX() + move <= rightBorderCoordinate) &&

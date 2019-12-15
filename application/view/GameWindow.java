@@ -14,10 +14,10 @@ import javafx.stage.Stage;
 public class GameWindow {
     private static Pane group;
     public static GameField gameField;
-    public static Line line;
+    private static Line line;
     private static  Scene scene;
-    Text scoreText;
-    Text lines;
+    private Text scoreText = new Text();
+    private Text lines = new Text();
 
     public GameWindow(){
         init();
@@ -69,10 +69,16 @@ public class GameWindow {
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
-                KeyboardHandler
+
             }
         });
     }
+
+    public Scene getScene(){return scene;}
+
+    public GameField getGameField() { return gameField;}
+
+    public Pane getPane() { return group;}
 
     public void setScore(int score){
         scoreText.setText("Score: " + score);
