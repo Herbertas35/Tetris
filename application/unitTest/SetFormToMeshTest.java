@@ -1,9 +1,7 @@
-package application.test;
+package application.unitTest;
 
 import application.Random.RandomFormGenerator;
 import application.form.Form;
-import application.form.FormFactory;
-import application.form.FormJ;
 import application.view.GameField;
 import javafx.scene.shape.Rectangle;
 

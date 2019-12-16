@@ -65,15 +65,6 @@ public class GameWindow {
         stage.show();
     }
 
-    public void moveOnKeyPress(){
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-
-            }
-        });
-    }
-
     public Scene getScene(){return scene;}
 
     public GameField getGameField() { return gameField;}
