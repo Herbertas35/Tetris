@@ -56,6 +56,7 @@ public class tetrisApplication extends Application {
                     if(gameStateHandler.getNeedForm()){
                         gameWindow.getGameField().RemoveRows(gameWindow.getPane());
                         object = nextObject;
+                        gameWindow.addForm(object);
                         nextObject = formGenerator.getRandomForm();
                         keyboardListener.moveOnKeyPress(gameWindow.getScene(), object, gameWindow.getGameField(), gameStateHandler);
                     }

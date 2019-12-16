@@ -7,38 +7,36 @@ import javafx.scene.input.KeyEvent;
 
 public class KeyboardHandler {
 
+    private CommandHandler commandHandler = new CommandHandler();
+
     public KeyboardHandler(){};
 
-
-
     public void handle(KeyEvent event, Form form, GameField gameField, GameStateHandler gameStateHandler){
-        Command command = null;
 
         switch (event.getCode()){
             case D:
             case RIGHT:
-                command = new CommandMoveRight(form, gameField);
+                commandHandler.setCommand(new CommandMoveRight(form, gameField));
                 break;
 
             case A:
             case LEFT:
-                command = new CommandMoveLeft(form, gameField);
+                commandHandler.setCommand(new CommandMoveLeft(form, gameField));
                 break;
 
             case W:
             case UP:
-                command = new CommandMoveUp(form, gameField, gameStateHandler);
+                commandHandler.setCommand(new CommandMoveUp(form, gameField, gameStateHandler));
                 break;
 
             case S:
             case DOWN:
-                command = new CommandRotateForm(form, gameField);
+                commandHandler.setCommand(new CommandRotateForm(form, gameField));
                 break;
 
         }
 
-        if(command != null) {
-            CommandHandler commandHandler = new CommandHandler(command);
+        if(!commandHandler.isCommandNull()) {
             commandHandler.executeCommand();
 ;
         }

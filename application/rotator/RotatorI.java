@@ -1,12 +1,13 @@
 package application.rotator;
 
 import application.form.Form;
+import application.form.FormI;
 import application.form.FormJ;
 import application.view.GameField;
 
 public class RotatorI extends RotatorStrategy {
 
-    public RotatorI(GameField gameField, FormJ form) {
+    public RotatorI(GameField gameField, FormI form) {
         super(gameField, form);
     }
 

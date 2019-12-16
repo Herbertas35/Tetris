@@ -28,10 +28,7 @@ public class CommandMoveUp implements Command {
     public void moveUp() {
 
         if (checkEnd()){
-            gameField.setMeshCoordinate((int)form.getFormRect(Form.RectEnum.a).getX() / move, (int)form.getFormRect(Form.RectEnum.a).getY() / move);
-            gameField.setMeshCoordinate((int)form.getFormRect(Form.RectEnum.b).getX() / move, (int)form.getFormRect(Form.RectEnum.b).getY() / move);
-            gameField.setMeshCoordinate((int)form.getFormRect(Form.RectEnum.c).getX() / move, (int)form.getFormRect(Form.RectEnum.c).getY() / move);
-            gameField.setMeshCoordinate((int)form.getFormRect(Form.RectEnum.d).getX() / move, (int)form.getFormRect(Form.RectEnum.d).getY() / move);
+            gameField.setFormToMesh(form);
             gameStateHandler.setNeedForm(true);
         }
         else if (checkFieldBorder() && checkFieldUpPosition()) {

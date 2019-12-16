@@ -1,8 +1,10 @@
 package application.view;
 
+import application.form.Form;
 import application.gameState.GameState;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Mesh;
 import javafx.scene.shape.Rectangle;
 
 import java.awt.*;
@@ -29,18 +31,22 @@ public class GameField {
         }
     }
 
+    private int[][] getMESH(){
+        return  MESH;
+    }
+
     public boolean getMeshCoordinateState(int x, int y){
-        if ((x >= XMAX/SIZE) || (x <= 0)){
+        if ((x >= XMAX/SIZE) || (x < 0)){
             return true;
         }
-        if ((y >= YMAX/SIZE) || (y <= 0)){
+        if ((y > YMAX/SIZE) || (y < 0)){
             return true;
         }
 
         return MESH[x][y] != 0;
     }
 
-    public void setMeshCoordinate(int x, int y){
+    private void setMeshCoordinate(int x, int y){
         if ((x >= XMAX/SIZE) || (x < 0)){
             return;
         }
@@ -49,6 +55,13 @@ public class GameField {
         }
 
         MESH[x][y] = 1;
+    }
+
+    public void setFormToMesh(Form form){
+        ArrayList<Rectangle> rectangles = form.getAllRects();
+        for(Rectangle rect:rectangles){
+            setMeshCoordinate((int)rect.getX()/SIZE, (int)rect.getY()/SIZE);
+        }
     }
 
     public void RemoveRows(Pane pane){

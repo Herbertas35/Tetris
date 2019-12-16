@@ -4,6 +4,9 @@ import application.view.GameField;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 public abstract class Form {
     protected Rectangle a = new Rectangle();
     protected Rectangle b = new Rectangle();
@@ -20,7 +23,8 @@ public abstract class Form {
         a,
         b,
         c,
-        d
+        d,
+        RECT_ENUM_SIZE
     }
     protected abstract void setCoordinates();
 
@@ -72,6 +76,15 @@ public abstract class Form {
         }
         return null;
 
+    }
+
+    public ArrayList<Rectangle> getAllRects(){
+        ArrayList<Rectangle> rect = new ArrayList<Rectangle>();
+        rect.add(a);
+        rect.add(b);
+        rect.add(c);
+        rect.add(d);
+        return rect;
     }
 
     public void moveFormRight(){

@@ -40,7 +40,7 @@ public class CommandMoveRight implements Command {
         return !((gameField.getMeshCoordinateState((int)(form.getFormRect(Form.RectEnum.a).getX() + move) / move,(int)(form.getFormRect(Form.RectEnum.a).getY() / move))) ||
                 (gameField.getMeshCoordinateState((int)(form.getFormRect(Form.RectEnum.b).getX() + move) / move,(int)(form.getFormRect(Form.RectEnum.b).getY() / move))) ||
                 (gameField.getMeshCoordinateState((int)(form.getFormRect(Form.RectEnum.c).getX() + move) / move,(int)(form.getFormRect(Form.RectEnum.c).getY() / move))) ||
-                       ((gameField.getMeshCoordinateState((int)(form.getFormRect(Form.RectEnum.a).getX() + move) / move, (int)(form.getFormRect(Form.RectEnum.a).getY() / move)))));
+                       ((gameField.getMeshCoordinateState((int)(form.getFormRect(Form.RectEnum.d).getX() + move) / move, (int)(form.getFormRect(Form.RectEnum.d).getY() / move)))));
 
 
     }

@@ -24,7 +24,7 @@ public class CommandRotateForm implements Command {
                 break;
 
             case "i":
-                rotatorContext = new RotatorContext(new RotatorI(gameField, (FormJ) form));
+                rotatorContext = new RotatorContext(new RotatorI(gameField, (FormI) form));
                 rotatorContext.executeRotation();
                 break;
 
